@@ -35,14 +35,20 @@ void item::insert()
     cin >> catagory;
     cout << "how many item do u want to insert  = ";
     cin >> n;
+    string t1;
+    float t2;
+    int t3;
     for (i = temp; i < n; i++)
     {
         cout << "enter name of the item = ";
-        cin >> name[temp];
+        cin >> t1;
+        name.push_back(t1);
         cout << "enter code = ";
-        cin >> code[temp];
+        cin >> t2;
+        code.push_back(t2);
         cout << "enter price = ";
-        cin >> price[temp];
+        cin >> t3;
+        price.push_back(t3);
         temp++;
         sum = sum + price[i];
     }
@@ -54,14 +60,19 @@ void item::add()
     cin >> catagory;
     cout << "how many item do u want to add  = ";
     cin >> n;
+    string t1;
+    float t2;
+    int t3;
     for (i = temp; i < n; i++)
     {
-        cout << "enter name of the item = ";
-        cin >> name[temp];
+        cin >> t1;
+        name.push_back(t1);
         cout << "enter code = ";
-        cin >> code[temp];
+        cin >> t2;
+        code.push_back(t2);
         cout << "enter price = ";
-        cin >> price[temp];
+        cin >> t3;
+        price.push_back(t3);
         temp++;
         sum = sum + price[i];
     }
