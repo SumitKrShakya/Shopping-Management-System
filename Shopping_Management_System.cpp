@@ -65,6 +65,7 @@ void item::add()
     int t3;
     for (i = temp; i < n; i++)
     {
+        cout << "enter name of the item = ";
         cin >> t1;
         name.push_back(t1);
         cout << "enter code = ";
