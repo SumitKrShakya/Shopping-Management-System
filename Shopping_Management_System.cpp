@@ -3,20 +3,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class iteam
-{
+class item {
 protected:
-    char name[20][20];
-    float price[20];
-    int sum, code[20];
+    vector<string> name;
+    vector<float> price;
+    int sum;
+    vector<int>code;
 
 public:
-    iteam()
-    {
+    item() {
         sum = 0;
         temp = 0;
     }
-    char catagory[20];
+    string catagory;
     int temp;
     void insert();
     void add();
@@ -29,48 +28,48 @@ public:
     void initial_task();
     int function1();
 };
-void iteam::insert()
+void item::insert()
 {
     int i, n, k;
-    cout << "enter catagory name=";
+    cout << "enter catagory name = ";
     cin >> catagory;
-    cout << "how many item do u want to insert =";
+    cout << "how many item do u want to insert  = ";
     cin >> n;
     for (i = temp; i < n; i++)
     {
-        cout << "enter name of the iteam=";
+        cout << "enter name of the item = ";
         cin >> name[temp];
-        cout << "enter code=";
+        cout << "enter code = ";
         cin >> code[temp];
-        cout << "enter price=";
+        cout << "enter price = ";
         cin >> price[temp];
         temp++;
         sum = sum + price[i];
     }
 }
-void iteam::add()
+void item::add()
 {
     int i, n;
-    cout << "enter catagory name=";
+    cout << "enter catagory name = ";
     cin >> catagory;
-    cout << "how many item do u want to add =";
+    cout << "how many item do u want to add  = ";
     cin >> n;
     for (i = temp; i < n; i++)
     {
-        cout << "enter name of the iteam=";
+        cout << "enter name of the item = ";
         cin >> name[temp];
-        cout << "enter code=";
+        cout << "enter code = ";
         cin >> code[temp];
-        cout << "enter price=";
+        cout << "enter price = ";
         cin >> price[temp];
         temp++;
         sum = sum + price[i];
     }
 }
-void iteam::display()
+void item::display()
 {
     int i;
-    cout << "under the " << catagory << " catagory the items are:" << '\n'
+    cout << "under the " << catagory << " catagory the items are: " << '\n'
          << '\n';
     cout << "item name" << '\t';
     cout << "code" << '\t';
@@ -86,30 +85,30 @@ void iteam::display()
     cout << '\n'
          << '\n';
 }
-void iteam::search()
+void item::search()
 {
     int i, m;
-    cout << "enter code:";
+    cout << "enter code: ";
     cin >> m;
     for (i = 0; i < temp; i++)
     {
         if (code[i] == m)
         {
-            cout << "item name is =" << name[i] << '\n';
-            cout << "price is=" << price[i] << '\n'
+            cout << "item name is  = " << name[i] << '\n';
+            cout << "price is = " << price[i] << '\n'
                  << '\n';
         }
         else
-            cout << "u have entered wrong code" << '\n'
+            cout << "You have entered wrong code." << '\n'
                  << '\n';
     }
     cout << '\n'
          << '\n';
 }
-void iteam::remove()
+void item::remove()
 {
     int i, m;
-    cout << "enter code:";
+    cout << "enter code: ";
     cin >> m;
     for (i = 0; i < temp; i++)
     {
@@ -118,29 +117,29 @@ void iteam::remove()
             price[i] = 0;
         }
         else
-            cout << "u have entered wrong code" << '\n'
+            cout << "You have entered wrong code." << '\n'
                  << '\n';
     }
     cout << '\n'
          << '\n';
 }
-void iteam::total_amount()
+void item::total_amount()
 {
-    cout << "the total price of all the items of all catagories is=" << sum << '\n'
+    cout << "the total price of all the items of all catagories is = " << sum << '\n'
          << '\n';
 }
-void iteam ::catago_amount()
+void item ::catago_amount()
 {
-    cout << "under the " << catagory << " catagory the total price of the items are=" << sum << '\n'
+    cout << "under the " << catagory << " catagory the total price of the items are = " << sum << '\n'
          << '\n';
 }
-void iteam::error1()
+void item::error1()
 {
-    cout << "FIRST U NEED TO INSERT ITEAM";
+    cout << "FIRST U NEED TO INSERT ITEM";
     cout << '\n'
          << '\n';
 }
-void iteam::initial_task()
+void item::initial_task()
 {
     cout << "What do u want to do ?" << '\n';
     cout << "1.if u want to insert press 1" << '\n';
@@ -151,7 +150,7 @@ void iteam::initial_task()
     cout << "6.if u want to see the total price press 6" << '\n';
     cout << "7.if u want to exit press 0" << '\n';
 }
-int iteam::function1()
+int item::function1()
 {
     int a1;
     cout << "choose a option to enter from the following sites" << '\n';
@@ -162,10 +161,10 @@ int iteam::function1()
     cin >> a1;
     return a1;
 }
-class cloth : public iteam
-{
+
+class cloth : public item {
 private:
-    char clt[15], cr[15];
+    string clt, cr;
 
 public:
     cloth operator+(cloth);
@@ -190,15 +189,15 @@ void cloth::insert_cl()
 }
 void cloth::display_cl()
 {
-    cout << "type :" << clt << '\n';
-    cout << "color :" << cr << '\n'
+    cout << "type : " << clt << '\n';
+    cout << "color : " << cr << '\n'
          << '\n'
          << '\n';
 }
-class dusing : public iteam
-{
+
+class dusing : public item {
 private:
-    char dus[15];
+    string dus;
 
 public:
     dusing operator+(dusing);
@@ -221,15 +220,15 @@ void dusing::insert_du()
 }
 void dusing::display_du()
 {
-    cout << "type :" << dus << '\n'
+    cout << "type : " << dus << '\n'
          << '\n'
          << '\n';
 }
-class material : public iteam
-{
+
+class material : public item {
 private:
     int sp;
-    char mat[14], qu[15];
+    string mat, qu;
 
 public:
     material operator+(material c);
@@ -256,45 +255,38 @@ void material::insert_ma()
 }
 void material::display_ma()
 {
-    cout << "type :" << mat << '\n';
-    cout << "quality :" << qu << '\n';
-    cout << "the time after it will spoil:" << sp << '\n'
+    cout << "type : " << mat << '\n';
+    cout << "quality : " << qu << '\n';
+    cout << "the time after it will spoil: " << sp << '\n'
          << '\n'
          << '\n';
 }
-int main()
-{
+
+int main() {
     cloth t[20], f1, ob;
     dusing du[20], f2, ob1;
     material ma[20], f3, ob2;
     int i, x = 0, n, a, j, k, l, s, m, b, c, q, g = 0, a1, y = 0, z = 0;
-    char inp[20];
+    string inp;
     // clrscr();
-    for (i = 0;; i++)
-    {
+    for (i = 0;; i++) {
         a1 = ob.function1();
-        switch (a1)
-        {
+        switch (a1) {
         case 1:
-            for (i = 0;; i++)
-            {
+            for (i = 0;; i++) {
                 ob.initial_task();
                 cin >> a;
-                switch (a)
-                {
+                switch (a) {
                 case 1:
-                    if (x > 0)
-                    {
-                        cout << "YOU CAN NOT INSERT ITEAM MORE THAN ONE TIMES" << '\n'
+                    if (x > 0) {
+                        cout << "YOU CAN NOT INSERT ITEM MORE THAN ONE TIMES TRY ADDING OPTION." << '\n'
                              << '\n';
                         break;
                     }
-                    else
-                    {
-                        cout << "how many catagory do u want to insert=";
+                    else {
+                        cout << "how many catagory do u want to insert = ";
                         cin >> n;
-                        for (i = 0; i < n; i++)
-                        {
+                        for (i = 0; i < n; i++) {
                             t[x].insert();
                             t[x].insert_cl();
                             x++;
@@ -302,17 +294,14 @@ int main()
                     }
                     break;
                 case 2:
-                    if (x <= 0)
-                    {
+                    if (x <= 0) {
                         ob.error1();
                         break;
                     }
-                    else
-                    {
-                        cout << "how many catagory do u want to add=";
+                    else {
+                        cout << "how many catagory do u want to add = ";
                         cin >> n;
-                        for (j = 0; j < n; j++)
-                        {
+                        for (j = 0; j < n; j++) {
                             t[x].add();
                             t[x].insert_cl();
                             x++;
@@ -320,73 +309,57 @@ int main()
                         break;
                     }
                 case 3:
-                    if (x <= 0)
-                    {
+                    if (x <= 0) {
                         ob.error1();
                         break;
                     }
-                    else
-                    {
-                        for (s = 0; s < x; s++)
-                        {
+                    else {
+                        for (s = 0; s < x; s++) {
                             t[s].display();
                             t[s].display_cl();
                         }
                         break;
                     }
                 case 4:
-                    if (x <= 0)
-                    {
+                    if (x <= 0) {
                         ob.error1();
                         break;
                     }
-                    if (x > 0)
-                    {
-                        cout << "enter ur desired catagory=";
+                    if (x > 0) {
+                        cout << "enter ur desired catagory = ";
                         cin >> inp;
-                        for (c = 0; c < x; c++)
-                        {
-                            b = strcmp(inp, t[c].catagory);
-                            if (b == 0)
+                        for (c = 0; c < x; c++) {
+                            if(inp== t[c].catagory){
+                                t[c].search();
+                                t[c].display_cl();
                                 break;
-                        }
-                        if (b == 0)
-                        {
-                            t[c].search();
-                            t[c].display_cl();
+                            }
                         }
                         break;
                     }
                 case 5:
-                    if (x <= 0)
-                    {
+                    if (x <= 0) {
                         ob.error1();
                         break;
                     }
-                    else
-                    {
-                        cout << "enter ur desired catagory=";
+                    else {
+                        cout << "enter ur desired catagory = ";
                         cin >> inp;
-                        for (c = 0; c < x; c++)
-                        {
-                            b = strcmp(t[c].catagory, inp);
-                            if (b == 0)
+                        for (c = 0; c < x; c++) {
+                            if(t[c].catagory== inp){
+                                t[c].remove();
                                 break;
+                            }
                         }
-                        if (b == 0)
-                            t[c].remove();
                         break;
                     }
                 case 6:
-                    if (x <= 0)
-                    {
+                    if (x <= 0) {
                         ob.error1();
                         break;
                     }
-                    else
-                    {
-                        for (z = g; z < x; z++)
-                        {
+                    else {
+                        for (z = g; z < x; z++) {
                             f1 = f1 + t[z];
                             g++;
                         }
@@ -401,25 +374,21 @@ int main()
             }
             break;
         case 2:
-            for (i = 0;; i++)
-            {
+            for (i = 0;; i++) {
                 ob1.initial_task();
                 cin >> a;
                 switch (a)
                 {
                 case 1:
-                    if (y > 0)
-                    {
-                        cout << "YOU CAN NOT INSERT ITEAM MORE THAN ONE TIMES" << '\n'
+                    if (y > 0) {
+                        cout << "YOU CAN NOT INSERT ITEM MORE THAN ONE TIMES TRY ADDING OPTION." << '\n'
                              << '\n';
                         break;
                     }
-                    else
-                    {
-                        cout << "how many catagory do u want to insert=";
+                    else {
+                        cout << "how many catagory do u want to insert = ";
                         cin >> n;
-                        for (i = 0; i < n; i++)
-                        {
+                        for (i = 0; i < n; i++) {
                             du[y].insert();
                             du[y].insert_du();
                             y++;
@@ -427,17 +396,14 @@ int main()
                     }
                     break;
                 case 2:
-                    if (y <= 0)
-                    {
+                    if (y <= 0) {
                         ob1.error1();
                         break;
                     }
-                    else
-                    {
-                        cout << "how many catagory do u want to add=";
+                    else {
+                        cout << "how many catagory do u want to add = ";
                         cin >> n;
-                        for (j = 0; j < n; j++)
-                        {
+                        for (j = 0; j < n; j++) {
                             du[y].add();
                             du[y].insert_du();
                             y++;
@@ -445,73 +411,57 @@ int main()
                         break;
                     }
                 case 3:
-                    if (y <= 0)
-                    {
+                    if (y <= 0) {
                         ob1.error1();
                         break;
                     }
-                    else
-                    {
-                        for (s = 0; s < y; s++)
-                        {
+                    else {
+                        for (s = 0; s < y; s++) {
                             du[s].display();
                             du[s].display_du();
                         }
                         break;
                     }
                 case 4:
-                    if (y <= 0)
-                    {
+                    if (y <= 0) {
                         ob.error1();
                         break;
                     }
-                    if (y > 0)
-                    {
-                        cout << "enter ur desired catagory=";
+                    if (y > 0) {
+                        cout << "enter ur desired catagory = ";
                         cin >> inp;
-                        for (c = 0; c < y; c++)
-                        {
-                            b = strcmp(inp, du[c].catagory);
-                            if (b == 0)
+                        for (c = 0; c < y; c++) {
+                            if(inp== du[c].catagory){
+                                du[c].search();
+                                du[c].display_du();
                                 break;
-                        }
-                        if (b == 0)
-                        {
-                            du[c].search();
-                            du[c].display_du();
+                            }
                         }
                         break;
                     }
                 case 5:
-                    if (y <= 0)
-                    {
+                    if (y <= 0) {
                         ob1.error1();
                         break;
                     }
-                    else
-                    {
-                        cout << "enter ur desired catagory=";
+                    else {
+                        cout << "enter ur desired catagory = ";
                         cin >> inp;
-                        for (c = 0; c < y; c++)
-                        {
-                            b = strcmp(du[c].catagory, inp);
-                            if (b == 0)
+                        for (c = 0; c < y; c++) {
+                            if(du[c].catagory== inp){
+                                du[c].remove();
                                 break;
+                            }
                         }
-                        if (b == 0)
-                            du[c].remove();
                         break;
                     }
                 case 6:
-                    if (y <= 0)
-                    {
+                    if (y <= 0) {
                         ob.error1();
                         break;
                     }
-                    else
-                    {
-                        for (z = g; z < x; z++)
-                        {
+                    else {
+                        for (z = g; z < x; z++) {
                             f2 = f2 + du[z];
                             g++;
                         }
@@ -526,25 +476,21 @@ int main()
             }
             break;
         case 3:
-            for (i = 0;; i++)
-            {
+            for (i = 0;; i++) {
                 ob2.initial_task();
                 cin >> a;
                 switch (a)
                 {
                 case 1:
-                    if (z > 0)
-                    {
-                        cout << "YOU CAN NOT INSERT ITEAM MORE THAN ONE TIMES" << '\n'
+                    if (z > 0) {
+                        cout << "YOU CAN NOT INSERT ITEM MORE THAN ONE TIMES TRY ADDING OPTION." << '\n'
                              << '\n';
                         break;
                     }
-                    else
-                    {
-                        cout << "how many catagory do u want to insert=";
+                    else {
+                        cout << "how many catagory do u want to insert = ";
                         cin >> n;
-                        for (i = 0; i < n; i++)
-                        {
+                        for (i = 0; i < n; i++) {
                             ma[z].insert();
                             ma[z].insert_ma();
                             z++;
@@ -552,17 +498,14 @@ int main()
                     }
                     break;
                 case 2:
-                    if (z <= 0)
-                    {
+                    if (z <= 0) {
                         ob2.error1();
                         break;
                     }
-                    else
-                    {
-                        cout << "how many catagory do u want to add=";
+                    else {
+                        cout << "how many catagory do u want to add = ";
                         cin >> n;
-                        for (j = 0; j < n; j++)
-                        {
+                        for (j = 0; j < n; j++) {
                             ma[z].add();
                             ma[z].insert_ma();
                             z++;
@@ -570,73 +513,57 @@ int main()
                         break;
                     }
                 case 3:
-                    if (z <= 0)
-                    {
+                    if (z <= 0) {
                         ob2.error1();
                         break;
                     }
-                    else
-                    {
-                        for (s = 0; s < z; s++)
-                        {
+                    else {
+                        for (s = 0; s < z; s++) {
                             ma[s].display();
                             ma[s].display_ma();
                         }
                         break;
                     }
                 case 4:
-                    if (z <= 0)
-                    {
+                    if (z <= 0) {
                         ob2.error1();
                         break;
                     }
-                    if (z > 0)
-                    {
-                        cout << "enter ur desired catagory=";
+                    if (z > 0) {
+                        cout << "enter ur desired catagory = ";
                         cin >> inp;
-                        for (c = 0; c < z; c++)
-                        {
-                            b = strcmp(inp, ma[c].catagory);
-                            if (b == 0)
+                        for (c = 0; c < z; c++) {
+                            if(inp== ma[c].catagory){
+                                ma[c].search();
+                                ma[s].display_ma();
                                 break;
-                        }
-                        if (b == 0)
-                        {
-                            ma[c].search();
-                            ma[s].display_ma();
+                            }
                         }
                         break;
                     }
                 case 5:
-                    if (z <= 0)
-                    {
+                    if (z <= 0) {
                         ob2.error1();
                         break;
                     }
-                    else
-                    {
-                        cout << "enter ur desired catagory=";
+                    else {
+                        cout << "enter ur desired catagory = ";
                         cin >> inp;
-                        for (c = 0; c < z; c++)
-                        {
-                            b = strcmp(ma[c].catagory, inp);
-                            if (b == 0)
+                        for (c = 0; c < z; c++) {
+                            if(ma[c].catagory== inp){
+                                ma[c].remove();
                                 break;
+                            }
                         }
-                        if (b == 0)
-                            ma[c].remove();
                         break;
                     }
                 case 6:
-                    if (z <= 0)
-                    {
+                    if (z <= 0) {
                         ob2.error1();
                         break;
                     }
-                    else
-                    {
-                        for (q = g; q < z; q++)
-                        {
+                    else {
+                        for (q = g; q < z; q++) {
                             f3 = f3 + ma[q];
                             g++;
                         }
